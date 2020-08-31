@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			ExtentReports Library 2.41.1 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+			Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+			Documentation: http://extentreports.relevantcodes.com 
+		-->
+
+		<meta charset='UTF-8' /> 
+		<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+		<meta name='robots' content='noodp, noydir' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='extentx' id='extentx' content='' />
+		
+		<title>
+				ExtentReports 2.0
+		</title>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.css' type='text/css' rel='stylesheet' />
+		
+		<style>
+				
+            
+                
+            
+        
+		</style>
+	</head>
+	
+	
+	<body class='extent default standard hide-overflow'>
+		<!-- nav -->
+		<nav>
+			<div class='logo-container blue darken-2'>
+				<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+					<span>ExtentReports</span>
+				</a>
+				<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+			</div>
+			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+				<li class='analysis waves-effect'>
+					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
+				</li>
+			</ul>
+			<span class='report-name'>Automation Report</span> <span class='report-headline'></span>
+			<ul class='right hide-on-med-and-down nav-right'>
+				<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+					<i class='mdi-hardware-desktop-windows'></i>
+				</li>
+				<li>
+					<span class='suite-started-time'>2020-08-31 15:59:58</span>
+				</li>
+				<li>
+					<span>v2.41.1</span>
+				</li>
+			</ul>
+		</nav>
+		<!-- /nav -->
+		
+		<!-- container -->
+		<div class='container'>
+			
+			<!-- dashboard -->
+			<div id='dashboard-view' class='row'>
+				<div class='time-totals'>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-tests'> 
+							<span class='panel-name'>Total Tests</span> 
+							<span class='total-tests'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-steps'> 
+							<span class='panel-name'>Total Steps</span> 
+							<span class='total-steps'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-current'> 
+							<span class='panel-name'>Total Time Taken (Current Run)</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 2m 17s+783ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-overall'> 
+							<span class='panel-name'>Total Time Taken (Overall)</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 2m 17s+783ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-start-time'>
+						<div class='card accent green-accent'> 
+							<span class='panel-name'>Start</span> 
+							<span class='panel-lead suite-started-time'>2020-08-31 15:57:40</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-end-time'>
+						<div class='card accent pink-accent'> 
+							<span class='panel-name'>End</span> 
+							<span class='panel-lead suite-ended-time'>2020-08-31 15:59:58</span> 
+						</div> 
+					</div>
+				</div>
+				<div class='charts'>
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Tests View</span>
+							</div> 
+							<div class='panel-setting modal-trigger test-count-setting right'>
+								<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='test-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div> 
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Steps View</span>
+							</div> 
+							<div class='panel-setting modal-trigger step-status-filter right'>
+								<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='step-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div>
+					<div class='col s12 m12 l4 fh'> 
+						<div class='card-panel'> 
+							<span class='panel-name'>Pass Percentage</span> 
+							<span class='pass-percentage panel-lead'></span> 
+							<div class='progress light-blue lighten-3'> 
+								<div class='determinate light-blue'></div> 
+							</div> 
+						</div> 
+					</div>
+				</div>
+				<div class='system-view'>
+					<div class='col l4 m12 s12'>
+						<div class='card-panel'>
+							<span class='label info outline right'>Environment</span>
+							<table>
+								<thead>
+									<tr>
+										<th>Param</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>User Name</td>
+											<td>PanigraP</td>
+										</tr>
+										<tr>
+											<td>OS</td>
+											<td>Windows 10</td>
+										</tr>
+										<tr>
+											<td>Java Version</td>
+											<td>1.8.0_251</td>
+										</tr>
+										<tr>
+											<td>Host Name</td>
+											<td>PANIGRAP8</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /dashboard -->
+			
+			<!-- tests -->
+			<div id='test-view' class='row _addedTable'>
+				<div class='col _addedCell1'>
+					<div class='contents'>
+						<div class='card-panel heading'>
+							<h5>Tests</h5>
+						</div>
+						<div class='card-panel filters'>
+							<div>
+								<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+									<i class='mdi-action-reorder'></i>
+								</a>
+								<ul id='tests-toggle' class='dropdown-content'>
+									<li class='pass'><a href='#!'>Pass</a></li>
+									<li class='fail'><a href='#!'>Fail</a></li>
+									<li class='skip'><a href='#!'>Skip</a></li>
+									<li class='divider'></li>
+									<li class='clear'><a href='#!'>Clear Filters</a></li>
+								</ul>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+									<i class='mdi-navigation-close'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+									<i class='mdi-action-track-changes'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light blue enabled' id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters'>
+									<i class='mdi-navigation-refresh'></i>
+								</a>
+							</div>
+							<div class='search' alt='Search Tests' title='Search Tests'>
+								<div class='input-field left'>
+									<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+								</div>
+								<a href="#" class='btn-floating btn-small waves-effect waves-light grey'>
+									<i class='mdi-action-search'></i>
+								</a>
+							</div>
+						</div>
+						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+							<div class='wrapper'>
+								<ul id='test-collection' class='test-collection'>
+										<li class='collection-item test displayed active pass ' extentid='206ee631-7399-4f84-9eb6-b152d93c4ad7'>
+											<div class='test-head'>
+												<span class='test-name'> </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2020-08-31 15:57:41</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:41</td>
+																	<td class='step-details'>*****Started Test case Execution **********</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='f1dc68e0-026b-4b35-9d32-1978086b0ca9'>
+											<div class='test-head'>
+												<span class='test-name'>getMaintenance_progress_Percentage </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2020-08-31 15:57:42</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:42</td>
+																	<td class='step-details'>getMaintenance_progress_Percentage</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:42</td>
+																	<td class='step-details'>******* Get Maintenance task ****Verify 'progress_Percentage' ***</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:42</td>
+																	<td class='step-details'><============ Test Executed based on Serial_no === MY91A1T004</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:46</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:46</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:46</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:46</td>
+																	<td class='step-details'>Actual Response Time is =========> 3267</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:46</td>
+																	<td class='step-details'>Response Time is less than 4000 ==> 3267</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:46</td>
+																	<td class='step-details'>Successfully Validated KEY & VALUE for Serial number is ===> serial_Number::> MY91A1T004</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:47</td>
+																	<td class='step-details'>No of Json Objects ===> 12</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:47</td>
+																	<td class='step-details'>Key values Lists are ===> progress_Percentage::>> [6, 6, 26, 53, 4, 3, 1, 0, 4, 85, 0, 19]</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:47</td>
+																	<td class='step-details'>##################################################################################</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:57:47</td>
+																	<td class='step-details'>***********Compare Error code count from API response and Database *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:57:57</td>
+																	<td class='step-details'>No of Key value count from Database ====> 12</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:02</td>
+																	<td class='step-details'>No of Key value count from Response ====> 12</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:02</td>
+																	<td class='step-details'><===PASS=======Error count is matched  from API and DB =================></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:02</td>
+																	<td class='step-details'>########## Get Error Events Test Execution is Passed and Next Started #############</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:02</td>
+																	<td class='step-details'><============ Test Executed based on Serial_no === SG87D1R001</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>Actual Response Time is =========> 1337</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>Response Time is less than 4000 ==> 1337</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>Successfully Validated KEY & VALUE for Serial number is ===> serial_Number::> SG87D1R001</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>No of Json Objects ===> 6</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>Key values Lists are ===> progress_Percentage::>> [12, 98, 66, 33, 97, 6]</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>##################################################################################</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:03</td>
+																	<td class='step-details'>***********Compare Error code count from API response and Database *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:08</td>
+																	<td class='step-details'>No of Key value count from Database ====> 0</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>No of Key value count from Response ====> 6</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'><============TEST CASE FAILED =================></td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'><============Error count is not same from API and DB =================></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>########## Get Error Events Test Execution is Passed and Next Started #############</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>List of Serial no's are failed----> [SG87D1R001]</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>******* Get Maintenance Task Test is Ended *******</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>Test is Pass</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>**************Finished all test cases execution***********</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>*****Started Test case Execution **********</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='865105e0-6fdd-4f35-a70a-a1e7aadf75fb'>
+											<div class='test-head'>
+												<span class='test-name'>getErrorEventsAPI_InvalidErrorCode </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2020-08-31 15:58:12</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>getErrorEventsAPI_InvalidErrorCode</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'>******* Get Error Events Test for Wrong error_Code is  started *******</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:12</td>
+																	<td class='step-details'><<<<<<<<<< Test Executed based on Serial_no = MY91A1T004</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>Actual Response Time is =========> 1319</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>Response Time is less than 4000 ==> 1319</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>No of Json Objects ===> 355</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>Key values Lists are ===> error_Code::>> [0027-0001-0191, 0027-0001-0291, 0027-0001-0391, 0027-0001-0491, 0027-0001-0591, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0391, 0027-0001-0491, 0027-0001-0591, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0086-0003-0059, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0391, 0027-0001-0491, 0027-0001-0591, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0086-0003-0059, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0391, 0027-0001-0491, 0027-0001-0591, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0086-0003-0079, 0090-0007-0089, 0090-0007-0089, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0391, 0027-0001-0491, 0027-0001-0591, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0988, 0086-0003-0059, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0988, 0086-0003-0079, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0988, 0086-0003-0079, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0988, 0022-0008-0988, 0045-0003-0078, 0027-0001-0592, 0027-0001-0502, 0027-0001-0992, 0027-0001-0902, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0592, 0027-0001-0992, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0086-0003-0079, 0086-0003-0079, 0086-0003-0079, 0086-0003-0079, 0086-0003-0079, 0086-0003-0079, 0022-0008-0988, 0086-0003-0079, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0086-0003-0059, 0045-0003-0078, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0988, 0022-0008-0988, 0086-0003-0079, 0086-0003-0079, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0010-0196, 0022-0008-0988, 0022-0010-0192, 0022-0008-0988, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0002-0041, 0045-0003-0078, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0045-0003-0078, 0027-0001-0902, 0027-0001-1002, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0027-0001-0992, 0027-0001-1092, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0992, 0027-0001-1092, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0045-0003-0078, 0027-0001-0992, 0027-0001-1092, 0027-0001-0991, 0027-0001-1091, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0027-0001-0992, 0027-0001-1092, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0027-0001-0992, 0027-0001-1092, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0022-0008-0987, 0022-0008-0988, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0992, 0027-0001-1092, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0027-0001-0992, 0027-0001-1092, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0022-0008-0987, 0022-0008-0988, 0045-0003-0078, 0022-0008-0988, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891, 0027-0001-0991, 0027-0001-1091, 0027-0001-0191, 0027-0001-0291, 0027-0001-0691, 0027-0001-0791, 0027-0001-0891]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'>########## Get Error Events Test Execution is Passed #############</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:14</td>
+																	<td class='step-details'><<<<<<<<<< Test Executed based on Serial_no = SG68D1N001</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>Actual Response Time is =========> 19566</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>Response Time is more than 4000 ==> 19566</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>No of Json Objects ===> 15</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>FAIL...Wrong error code...and Object_no: 2 And error_Code : null</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>FAIL...Wrong error code...and Object_no: 13 And error_Code : null</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>Key values Lists are ===> error_Code::>> [41.00.01:62, null, 50.01.01:00, 50.01.01:00, 50.00.01:00, 50.00.01:00, 79.05.00:01, 79.05.00:01, 50.01.01:00, 50.01.01:00, 86.01.00:01, 86.01.00:01, null, 86.01.00:01, 86.01.00:01]</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>########## Get Error Events Test Execution is Passed #############</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>******* Get Error Events Test is Ended *******</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>Test is Pass</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='2218c07e-6242-4284-8709-6714a3af6b3d'>
+											<div class='test-head'>
+												<span class='test-name'>getPrintHeadDetails_Ink_Used_Units </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2020-08-31 15:58:33</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>getPrintHeadDetails_Ink_Used_Units</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:33</td>
+																	<td class='step-details'>******* Get the 'ink_Used_Units' from Print Head Details Information *******</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'>Actual Response Time is =========> 10406</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'>Response Time is more than 4000 ==> 10406</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'><=========== Key value from Response========> 
+ {ink_Used_Units[0]=L, ink_Used_Units[1]=L, ink_Used_Units[2]=L, ink_Used_Units[3]=L, ink_Used_Units[4]=L, ink_Used_Units[5]=L, ink_Used_Units[6]=L, ink_Used_Units[7]=L, ink_Used_Units[8]=L, ink_Used_Units[9]=L, ink_Used_Units[10]=L, ink_Used_Units[11]=L, ink_Used_Units[12]=L, ink_Used_Units[13]=L, ink_Used_Units[14]=L, ink_Used_Units[15]=L, ink_Used_Units[16]=L}</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:58:44</td>
+																	<td class='step-details'><========================== One Test execution is ENDed ===========================></td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>Actual Response Time is =========> 45604</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>Response Time is more than 4000 ==> 45604</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'><=========== Key value from Response========> 
+ {}</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'><========================== One Test execution is ENDed ===========================></td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>*************** Print Head Details Test is Ended ***************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>Test is Pass</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='5ac07cb5-7e83-4d16-b56c-8ebba93d44e6'>
+											<div class='test-head'>
+												<span class='test-name'>getPrintHeadDetails_event_TYPE </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2020-08-31 15:59:29</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>getPrintHeadDetails_event_TYPE</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:29</td>
+																	<td class='step-details'>******* Get the EventType:replace from Print Head Details Information *******</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:32</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:32</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:32</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:32</td>
+																	<td class='step-details'>Actual Response Time is =========> 2631</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:32</td>
+																	<td class='step-details'>Response Time is less than 4000 ==> 2631</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:32</td>
+																	<td class='step-details'>Key value from Response  ====>  {0={event_TYPE=REPLACE}, 1={event_TYPE=REPLACE}, 2={event_TYPE=REPLACE}, 3={event_TYPE=REPLACE}, 4={event_TYPE=REPLACE}, 5={event_TYPE=REPLACE}, 6={event_TYPE=REPLACE}, 7={event_TYPE=REPLACE}, 8={event_TYPE=REPLACE}, 9={event_TYPE=REPLACE}, 10={event_TYPE=REPLACE}, 11={event_TYPE=REPLACE}, 12={event_TYPE=REPLACE}, 13={event_TYPE=REPLACE}, 14={event_TYPE=REPLACE}, 15={event_TYPE=REPLACE}, 16={event_TYPE=REPLACE}, 17={event_TYPE=REPLACE}, 18={event_TYPE=REPLACE}, 19={event_TYPE=REPLACE}, 20={event_TYPE=REPLACE}, 21={event_TYPE=REPLACE}, 22={event_TYPE=REPLACE}, 23={event_TYPE=REPLACE}, 24={event_TYPE=REPLACE}, 25={event_TYPE=REPLACE}, 26={event_TYPE=REPLACE}}</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>Actual Response Time is =========> 17923</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>Response Time is more than 4000 ==> 17923</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>Key value from Response  ====>  {0={event_TYPE=REPLACE}, 1={event_TYPE=REPLACE}, 2={event_TYPE=REPLACE}, 3={event_TYPE=REPLACE}, 4={event_TYPE=REPLACE}, 5={event_TYPE=REPLACE}, 6={event_TYPE=REPLACE}, 7={event_TYPE=REPLACE}, 8={event_TYPE=REPLACE}, 9={event_TYPE=REPLACE}, 10={event_TYPE=REPLACE}, 11={event_TYPE=REPLACE}, 12={event_TYPE=REPLACE}, 13={event_TYPE=REPLACE}, 14={event_TYPE=REPLACE}, 15={event_TYPE=REPLACE}, 16={event_TYPE=REPLACE}, 17={event_TYPE=REPLACE}, 18={event_TYPE=REPLACE}, 19={event_TYPE=REPLACE}, 20={event_TYPE=REPLACE}, 21={event_TYPE=REPLACE}, 22={event_TYPE=REPLACE}, 23={event_TYPE=REPLACE}, 24={event_TYPE=REPLACE}, 25={event_TYPE=REPLACE}, 26={event_TYPE=REPLACE}}</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>***************EventType:replace from Print Head Details Test is Ended ***************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>Test is Pass</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='1e54d3c4-4f03-4bf2-9847-4d325777bcaf'>
+											<div class='test-head'>
+												<span class='test-name'>getPrintHeadDetails_warranty_status </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2020-08-31 15:59:50</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2020-08-31 15:59:58</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 7s+810ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>getPrintHeadDetails_warranty_status</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:50</td>
+																	<td class='step-details'>******* Get the warranty_status from Print Head Details Information *******</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>Actual Response Time is =========> 2896</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>Response Time is less than 4000 ==> 2896</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>Key value from Response  ====>  {0={warranty_status=[{"start_Timestamp":"2020-07-01 08:47:13.0","end_Timestamp":"2020-07-01 17:12:26.0","status":"OOW_TIME"}]}, 1={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"IN_WARRANTY"}]}, 2={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"IN_WARRANTY"}]}, 3={warranty_status=[{"start_Timestamp":"2020-07-01 08:47:13.0","end_Timestamp":"2020-07-01 17:12:26.0","status":"OOW_TIME"}]}, 4={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"OOW_TIME"}]}, 5={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"IN_WARRANTY"}]}, 6={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"OOW_TIME"}]}, 7={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"OOW_TIME"}]}, 8={warranty_status=[{"start_Timestamp":"2020-07-01 08:47:13.0","end_Timestamp":"2020-07-01 12:38:20.0","status":"IN_WARRANTY"}]}, 9={warranty_status=[{"start_Timestamp":"2020-07-01 08:47:13.0","end_Timestamp":"2020-07-01 17:12:26.0","status":"OOW_TIME"}]}, 10={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"OOW_TIME"}]}, 11={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"IN_WARRANTY"}]}, 12={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"OOW_TIME"}]}, 13={warranty_status=[{"start_Timestamp":"2020-07-01 08:47:13.0","end_Timestamp":"2020-07-01 12:38:20.0","status":"IN_WARRANTY"}]}, 14={warranty_status=[{"start_Timestamp":"2020-07-03 17:22:00.0","end_Timestamp":"2020-07-03 19:36:58.0","status":"unknown"}]}, 15={warranty_status=[{"start_Timestamp":"2020-07-05 08:47:05.0","end_Timestamp":"2020-07-06 08:47:03.0","status":"IN_WARRANTY"}]}, 16={warranty_status=[{"start_Timestamp":"2020-07-03 17:22:00.0","end_Timestamp":"2020-07-03 19:36:58.0","status":"unknown"}]}, 17={event_TYPE=REPLACE}, 18={event_TYPE=REPLACE}, 19={event_TYPE=REPLACE}, 20={event_TYPE=REPLACE}, 21={event_TYPE=REPLACE}, 22={event_TYPE=REPLACE}, 23={event_TYPE=REPLACE}, 24={event_TYPE=REPLACE}, 25={event_TYPE=REPLACE}, 26={event_TYPE=REPLACE}}</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:53</td>
+																	<td class='step-details'>Key value from Response  ====>  {0={status=OOW_TIME}, 1={status=IN_WARRANTY}, 2={status=IN_WARRANTY}, 3={status=OOW_TIME}, 4={status=OOW_TIME}, 5={status=IN_WARRANTY}, 6={status=OOW_TIME}, 7={status=OOW_TIME}, 8={status=IN_WARRANTY}, 9={status=OOW_TIME}, 10={status=OOW_TIME}, 11={status=IN_WARRANTY}, 12={status=OOW_TIME}, 13={status=IN_WARRANTY}, 14={status=unknown}, 15={status=IN_WARRANTY}, 16={status=unknown}, 17={event_TYPE=REPLACE}, 18={event_TYPE=REPLACE}, 19={event_TYPE=REPLACE}, 20={event_TYPE=REPLACE}, 21={event_TYPE=REPLACE}, 22={event_TYPE=REPLACE}, 23={event_TYPE=REPLACE}, 24={event_TYPE=REPLACE}, 25={event_TYPE=REPLACE}, 26={event_TYPE=REPLACE}}</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>***********Check Response Code *****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>Successfully Validated Status Code is ==> 200</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>***********Checking Response Time ****************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>Actual Response Time is =========> 4894</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>Response Time is more than 4000 ==> 4894</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>Key value from Response  ====>  {0={status=OOW_TIME}, 1={status=IN_WARRANTY}, 2={status=IN_WARRANTY}, 3={status=OOW_TIME}, 4={status=OOW_TIME}, 5={status=IN_WARRANTY}, 6={status=OOW_TIME}, 7={status=OOW_TIME}, 8={status=IN_WARRANTY}, 9={status=OOW_TIME}, 10={status=OOW_TIME}, 11={status=IN_WARRANTY}, 12={status=OOW_TIME}, 13={status=IN_WARRANTY}, 14={status=unknown}, 15={status=IN_WARRANTY}, 16={status=unknown}, 17={event_TYPE=REPLACE}, 18={event_TYPE=REPLACE}, 19={event_TYPE=REPLACE}, 20={event_TYPE=REPLACE}, 21={event_TYPE=REPLACE}, 22={event_TYPE=REPLACE}, 23={event_TYPE=REPLACE}, 24={event_TYPE=REPLACE}, 25={event_TYPE=REPLACE}, 26={event_TYPE=REPLACE}}</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>Key value from Response  ====>  {0={status=OOW_TIME}, 1={status=IN_WARRANTY}, 2={status=IN_WARRANTY}, 3={status=OOW_TIME}, 4={status=OOW_TIME}, 5={status=IN_WARRANTY}, 6={status=OOW_TIME}, 7={status=OOW_TIME}, 8={status=IN_WARRANTY}, 9={status=OOW_TIME}, 10={status=OOW_TIME}, 11={status=IN_WARRANTY}, 12={status=OOW_TIME}, 13={status=IN_WARRANTY}, 14={status=unknown}, 15={status=IN_WARRANTY}, 16={status=unknown}, 17={event_TYPE=REPLACE}, 18={event_TYPE=REPLACE}, 19={event_TYPE=REPLACE}, 20={event_TYPE=REPLACE}, 21={event_TYPE=REPLACE}, 22={event_TYPE=REPLACE}, 23={event_TYPE=REPLACE}, 24={event_TYPE=REPLACE}, 25={event_TYPE=REPLACE}, 26={event_TYPE=REPLACE}}</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>*************** warranty_status from Print Head Details Test is Ended ***************</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>Test is Pass</td>
+																</tr>
+																<tr>
+																	<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+																	<td class='timestamp'>15:59:58</td>
+																	<td class='step-details'>**************Finished all test cases execution***********</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='test-details-wrapper' class='col _addedCell2'>
+					<div class='contents'>
+						<div class='card-panel details-view'>
+							<h5 class='details-name'></h5>
+							<div class='step-filters right'>
+								<span class='btn-floating btn-small waves-effect waves-light blue' status='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light green' status='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red' status='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red darken-4' status='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red lighten-2' status='error' alt='error' title='error'><i class='mdi-alert-error'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light orange' alt='warning' status='warning' title='warning'><i class='mdi-alert-warning'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light cyan' status='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light grey darken-2' status='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span>
+							</div>
+							<div class='details-container'>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /tests -->
+			
+			<!-- categories -->
+			<!-- /categories -->
+			
+			<!-- exceptions -->
+			<!-- /exceptions -->
+			
+			<!-- testrunner logs -->
+			<!-- /testrunner logs -->
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- test dashboard counts setting -->
+		<div id='test-count-setting' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Configure Tests Count Setting</h5> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+				<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+				<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+				<label for='childNodes'>Child Tests Only</label> 
+			</div> 
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /test dashboard counts setting -->
+		
+		<!-- filter for step status -->
+		<div id='step-status-filter' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Select status</h5> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+				<label for='step-dashboard-filter-pass'>Pass</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+				<label for='step-dashboard-filter-fail'>Fail</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+				<label for='step-dashboard-filter-fatal'>Fatal</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+				<label for='step-dashboard-filter-error'>Error</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+				<label for='step-dashboard-filter-warning'>Warning</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+				<label for='step-dashboard-filter-skip'>Skipped</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+				<label for='step-dashboard-filter-info'>Info</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+				<label for='step-dashboard-filter-unknown'>Unknown</label> 
+			</div>
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /filter for step status -->
+		
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.js' type='text/javascript'></script>
+
+		<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+		<script>
+				
+            
+                $(document).ready(function() {
+                    
+                });
+            
+        
+		</script>
+	</body>
+</html>

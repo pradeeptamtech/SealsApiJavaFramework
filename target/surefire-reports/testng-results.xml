@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="137464" started-at="2020-08-31T10:27:40Z" finished-at="2020-08-31T10:29:58Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="137464" started-at="2020-08-31T10:27:40Z" finished-at="2020-08-31T10:29:58Z">
+      <class name="hp.Seals.APITest.MaintenanceTaskAPITest">
+        <test-method status="PASS" signature="readExcel()[pri:0, instance:hp.Seals.APITest.MaintenanceTaskAPITest@1b604f19]" name="readExcel" is-config="true" duration-ms="761" started-at="2020-08-31T10:27:41Z" finished-at="2020-08-31T10:27:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readExcel -->
+        <test-method status="PASS" signature="readExcel()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="readExcel" is-config="true" duration-ms="85" started-at="2020-08-31T10:27:41Z" finished-at="2020-08-31T10:27:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readExcel -->
+        <test-method status="PASS" signature="baseTest()[pri:0, instance:hp.Seals.APITest.MaintenanceTaskAPITest@1b604f19]" name="baseTest" is-config="true" duration-ms="613" started-at="2020-08-31T10:27:41Z" finished-at="2020-08-31T10:27:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseTest -->
+        <test-method status="PASS" signature="getMaintenance_progress_Percentage()[pri:0, instance:hp.Seals.APITest.MaintenanceTaskAPITest@1b604f19]" name="getMaintenance_progress_Percentage" duration-ms="30293" started-at="2020-08-31T10:27:42Z" finished-at="2020-08-31T10:28:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getMaintenance_progress_Percentage -->
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:hp.Seals.APITest.MaintenanceTaskAPITest@1b604f19]" name="TearDown" is-config="true" duration-ms="1" started-at="2020-08-31T10:28:12Z" finished-at="2020-08-31T10:28:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+      </class> <!-- hp.Seals.APITest.MaintenanceTaskAPITest -->
+      <class name="hp.Seals.APITest.SealsApiTest">
+        <test-method status="PASS" signature="baseTest()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="baseTest" is-config="true" duration-ms="1" started-at="2020-08-31T10:28:12Z" finished-at="2020-08-31T10:28:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseTest -->
+        <test-method status="PASS" signature="getErrorEventsAPI_InvalidErrorCode()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="getErrorEventsAPI_InvalidErrorCode" duration-ms="21022" started-at="2020-08-31T10:28:12Z" finished-at="2020-08-31T10:28:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getErrorEventsAPI_InvalidErrorCode -->
+        <test-method status="PASS" signature="getPrintHeadDetails_Ink_Used_Units()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="getPrintHeadDetails_Ink_Used_Units" duration-ms="56032" started-at="2020-08-31T10:28:33Z" finished-at="2020-08-31T10:29:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getPrintHeadDetails_Ink_Used_Units -->
+        <test-method status="PASS" signature="getPrintHeadDetails_event_TYPE()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="getPrintHeadDetails_event_TYPE" duration-ms="20576" started-at="2020-08-31T10:29:29Z" finished-at="2020-08-31T10:29:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getPrintHeadDetails_event_TYPE -->
+        <test-method status="PASS" signature="getPrintHeadDetails_warranty_status()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="getPrintHeadDetails_warranty_status" duration-ms="7810" started-at="2020-08-31T10:29:50Z" finished-at="2020-08-31T10:29:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getPrintHeadDetails_warranty_status -->
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:hp.Seals.APITest.SealsApiTest@7823a2f9]" name="TearDown" is-config="true" duration-ms="0" started-at="2020-08-31T10:29:58Z" finished-at="2020-08-31T10:29:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+      </class> <!-- hp.Seals.APITest.SealsApiTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>
